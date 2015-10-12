@@ -10,7 +10,8 @@ module.exports = function(grunt) {
       options: {
         separator: '\n',
         banner: '',
-        footer: ''
+        footer: '',
+        sourceMap: true
       },
       dist: {
         src: grunt.file.readJSON('config.json').src,
@@ -19,7 +20,10 @@ module.exports = function(grunt) {
     },
 
     uglify: {
-      options: {},
+      options: {
+        sourceMap: true,
+        sourceMapIn: 'dist/<%=product%>.debug.js.map'
+      },
       build: {
         src: 'dist/<%=product%>.debug.js',
         dest: 'dist/<%=product%>.js'
